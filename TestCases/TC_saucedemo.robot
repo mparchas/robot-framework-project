@@ -9,12 +9,14 @@ ${password}    secret_sauce
 
 *** Test Cases ***
 TestLoginSucccessful
-    Open Browser    ${url}    ${browser}
+    OpenAndMaximize
     Input Text    xpath://input[@placeholder='Username']    ${username}
     Input Password    xpath://input[@placeholder='Password']    ${password}
     Click Button    xpath://*[@id="login-button"]
     Page Should Contain Element    xpath://div[@id='inventory_container']
     Element Should Be Visible    xpath://div[@id='inventory_container']
-    Sleep    5
     Close Browser
 *** Keywords ***
+OpenAndMaximize
+    Open Browser    ${url}    ${browser}
+    Maximize Browser Window
