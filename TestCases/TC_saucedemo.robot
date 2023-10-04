@@ -4,6 +4,7 @@ Library    SeleniumLibrary
 *** Variables ***
 ${browser}    chrome
 ${url}   https://www.saucedemo.com/ 
+
 ${username}    standard_user
 ${password}    secret_sauce
 
@@ -16,6 +17,7 @@ TestLoginSucccessful
     Page Should Contain Element    xpath://div[@id='inventory_container']
     Element Should Be Visible    xpath://div[@id='inventory_container']
     Close Browser
+    
 *** Keywords ***
 OpenAndMaximize
     Open Browser    ${url}    ${browser}
