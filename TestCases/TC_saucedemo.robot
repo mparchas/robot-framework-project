@@ -29,6 +29,8 @@ TestLoginFailure
     Element Should Not Be Visible    xpath://div[@id='inventory_container']
     Element Should Be Visible    xpath://h3[@data-test='error']
     Element Text Should Be    xpath://h3[@data-test='error']    ${locked_out_msg}
+    ${actual_text}=    Get Text    xpath://h3[@data-test='error']
+    Should Be Equal As Strings    ${locked_out_msg.split()}    ${actual_text.split()}
     Close Browser
 
 *** Keywords ***
