@@ -8,7 +8,7 @@ ${browser}    chrome
 ${url}   https://www.saucedemo.com/ 
 
 ${valid_username}    standard_user
-@{invalid_usernames}    locked_out_user    locked_out_user1    locked_out_user2
+@{invalid_usernames}    invalid_user1    invalid_user2    invalid_user2
 
 ${password}    secret_sauce
 
@@ -28,8 +28,8 @@ TestGoogle
     Sleep    2
 
 TestInvalidUsers
-    Set Selenium Speed    3
-    FOR  ${invalid_username}  IN  ${invalid_usernames}
+    Set Selenium Speed    0.5
+    FOR  ${invalid_username}  IN  @{invalid_usernames}
         Log To Console    ${invalid_username}
         Input Text    xpath://input[@placeholder='Username']    ${invalid_username}
         Input Password    xpath://input[@placeholder='Password']    ${password}
@@ -37,7 +37,6 @@ TestInvalidUsers
         Element Should Not Be Visible    xpath://div[@id='inventory_container']
         Element Should Be Visible    xpath://h3[@data-test='error']
     END
-    
 
 *** Keywords ***
 OpenAndMaximize
