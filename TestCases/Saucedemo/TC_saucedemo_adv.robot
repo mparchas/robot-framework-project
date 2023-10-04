@@ -1,5 +1,6 @@
 *** Settings ***
 Library    SeleniumLibrary
+Resource   ../../Resources/resources.robot
 Test Setup    OpenAndMaximize    ${url}    ${browser}
 Test Teardown    Close Browser
 
@@ -39,7 +40,3 @@ TestInvalidUsers
     END
 
 *** Keywords ***
-OpenAndMaximize
-    [Arguments]    ${app_url}    ${app_browser}
-    Open Browser    ${app_url}    ${app_browser}
-    Maximize Browser Window
