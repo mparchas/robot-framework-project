@@ -37,6 +37,6 @@ TestInvalidUsers
         Click Button    xpath://*[@id="login-button"]
         Element Should Not Be Visible    xpath://div[@id='inventory_container']
         Element Should Be Visible    xpath://h3[@data-test='error']
-    END
+    END    
 
 *** Keywords ***
