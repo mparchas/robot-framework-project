@@ -1,7 +1,6 @@
 *** Settings ***
 Library    SeleniumLibrary
-Resource    ../../Resources/Saucedemo/resources.robot
-Resource    ../../Resources/resources.robot
+Resource    ../Resources/resources.robot
 Test Setup    OpenAndMaximize    ${url}    ${browser}
 Test Teardown    Close Browser
 
