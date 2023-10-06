@@ -1,6 +1,7 @@
 *** Settings ***
 Library    SeleniumLibrary
 Resource   ../Resources/resources.robot
+Resource    ../../Resources/generic_keywords.resource
 Test Setup    OpenAndMaximize    ${url}    ${browser}
 Test Teardown    Close Browser
 

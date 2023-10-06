@@ -15,11 +15,6 @@ ${valid_password}    secret_sauce
 
 
 *** Keywords ***
-OpenAndMaximize
-    [Arguments]    ${app_url}    ${app_browser}
-    Open Browser    ${app_url}    ${app_browser}
-    Maximize Browser Window
-
 LoginWithValidData
     [Documentation]    Log in to SauceData with valid username and password and returns username
     ${username_textfield}=    Get WebElement    ${input_username}

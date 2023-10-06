@@ -1,5 +1,6 @@
 *** Settings ***
 Library    SeleniumLibrary
+Resource    ../../Resources/generic_keywords.resource
 
 *** Variables ***
 ${browser}    chrome
@@ -13,7 +14,7 @@ ${locked_out_msg}    Epic sadface: Sorry, this user has been locked out.
 
 *** Test Cases ***
 TestLoginSucccessful
-    OpenAndMaximize
+    OpenAndMaximize    ${url}    ${browser}
     Input Text    xpath://input[@placeholder='Username']    ${username}
     Input Password    xpath://input[@placeholder='Password']    ${password}
     Click Button    xpath://*[@id="login-button"]
@@ -22,7 +23,7 @@ TestLoginSucccessful
     Close Browser
 
 TestLoginFailure
-    OpenAndMaximize
+    OpenAndMaximize    ${url}    ${browser}
     Input Text    xpath://input[@placeholder='Username']    ${invalid_username}
     Input Password    xpath://input[@placeholder='Password']    ${password}
     Click Button    xpath://*[@id="login-button"]
@@ -32,8 +33,3 @@ TestLoginFailure
     ${actual_text}=    Get Text    xpath://h3[@data-test='error']
     Should Be Equal As Strings    ${locked_out_msg}    ${actual_text}
     Close Browser
-
-*** Keywords ***
-OpenAndMaximize
-    Open Browser    ${url}    ${browser}
-    Maximize Browser Window
