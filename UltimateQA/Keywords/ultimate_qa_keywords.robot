@@ -13,7 +13,5 @@ OpenMainPage
     OpenAndMaximize    ${url}    ${browser}
     Wait Until Element Is Visible    ${navbar}
     Mouse Over    ${dropdown_learning}
-    Click Element    ${dropdown_list_learning}
+    Click Element    ${dropdown_element_automation}
     Sleep    5
-
-
