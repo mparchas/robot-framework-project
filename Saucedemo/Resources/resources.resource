@@ -1,5 +1,6 @@
 *** Settings ***
 Library    SeleniumLibrary
+Library    ../../UltimateQA/Keywords/user_defined_keywords.py
 
 *** Variables ***
 ${browser}    chrome
@@ -15,6 +16,11 @@ ${valid_password}    secret_sauce
 
 
 *** Keywords ***
+GenerateRandomCredentials
+    [Arguments]    ${number}
+    &{credentials_dict}    Gen Random Credentials    ${number}
+    [Return]    ${credentials_dict}
+
 LoginWithValidData
     [Documentation]    Log in to SauceData with valid username and password and returns username
     ${username_textfield}=    Get WebElement    ${input_username}
