@@ -20,3 +20,7 @@ class SignupLoginPage:
     input_name = signup_form + "//input[@data-qa='signup-name']"
     input_email = signup_form + "//input[@data-qa='signup-email']"
 
+class AccountDetailsPage:
+    login_form = "xpath://div[@class='login-form']"
+    first_header = "xpath:({}//h2)[1]".format(login_form.split(':')[1])
+    second_header = "xpath:({}//h2)[2]".format(login_form.split(':')[1])

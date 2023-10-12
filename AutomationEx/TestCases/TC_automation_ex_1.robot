@@ -8,6 +8,7 @@ Test Teardown    Close Browser
 *** Variables ***
 &{credentials}    name=TestName1    email=test_email@gmail.com
 ${expected_signup_header}    New User Signup!
+${expected_register_header}    ENTER ACCOUNT INFORMATION
 
 *** Test Cases ***
 TestRegisterUser
@@ -16,7 +17,6 @@ TestRegisterUser
     VerifyHomePage
     SelectPage    signup_login
     VerifyHeader    signup_form    ${expected_signup_header}
-    InputTextSignUpForm    ${credentials.name}    ${credentials.email}
-    Sleep    5
-*** Keywords ***
-    
+    InputTextSignupForm    ${credentials.name}    ${credentials.email}
+    SubmitForm    signup_form
+    VerifyFormHeader    ${expected_register_header}

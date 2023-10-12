@@ -50,3 +50,12 @@ SubmitForm
     ...    Available forms: 'signup_form', 'login_form'
     [Arguments]    ${form}
     Click Button    ${SignupLoginPage.${form}}//button[@type='submit']
+
+VerifyFormHeader
+    [Documentation]    
+    ...    Checks if visible header matches expected one in new user form
+    [Arguments]    ${expected_header}
+    ${header_webelement}    Get WebElement    ${AccountDetailsPage.first_header}
+    Element Should Be Visible    ${header_webelement}
+    ${actual_header}    Get Text    ${header_webelement}
+    Should Be Equal As Strings    ${actual_header}    ${expected_header}
