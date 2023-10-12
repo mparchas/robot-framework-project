@@ -24,3 +24,8 @@ class AccountDetailsPage:
     login_form = "xpath://div[@class='login-form']"
     first_header = "xpath:({}//h2)[1]".format(login_form.split(':')[1])
     second_header = "xpath:({}//h2)[2]".format(login_form.split(':')[1])
+    input_password = "xpath://input[@data-qa='password']"
+    dropdown_day = login_form + "//select[@data-qa='days']"
+    dropdown_month =login_form + "//select[@data-qa='months']"
+    dropdown_year = login_form + "//select[@data-qa='years']"
+    

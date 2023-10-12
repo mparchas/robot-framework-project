@@ -59,3 +59,18 @@ VerifyFormHeader
     Element Should Be Visible    ${header_webelement}
     ${actual_header}    Get Text    ${header_webelement}
     Should Be Equal As Strings    ${actual_header}    ${expected_header}
+
+SetPassword
+    [Arguments]    ${password}
+    Input Text    ${AccountDetailsPage.input_password}    ${password}
+
+SetDateOfBirth
+    [Documentation]    
+    ...    Select date of birth: 
+    ...    'day' as int (0-31)
+    ...    'month' as int (e.g. 1 for January, 3 for March etc.) 
+    ...    'year' as int
+    [Arguments]    ${day}    ${month}    ${year}
+    Select From List By Value    ${AccountDetailsPage.dropdown_day}    ${day}
+    Select From List By Value    ${AccountDetailsPage.dropdown_month}    ${month}
+    Select From List By Value    ${AccountDetailsPage.dropdown_year}    ${year}
