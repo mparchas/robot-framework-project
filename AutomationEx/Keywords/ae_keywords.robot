@@ -10,6 +10,7 @@ ${home_page_title}    Automation Exercise
 
 
 *** Keywords ***
+# Home Page keywords
 OpenHomePage
     OpenAndMaximize    ${url}    ${browser}
     Wait Until Element Is Visible    ${HomePage.main_navbar}
@@ -25,5 +26,17 @@ SelectPage
     [Arguments]    ${sub_page}
     Click Element    ${HomePage.${sub_page}}
 
+# SignupLoginPage keywords
+VerifyHeader
+    [Documentation]    Verifies the header of the form, available forms: login_form, signup_form
+    [Arguments]    ${form}    ${expected_header}   
+    Element Should Be Visible    ${SignupLoginPage.${form}}
+    ${actual_header}    Get Text    ${SignupLoginPage.${form}}//h2
+    Should Be Equal As Strings    ${actual_header}    ${expected_header}
 
+InputTextSignUpForm
+    [Arguments]    ${name}    ${email}
+    Input Text    ${SignupLoginPage.input_name}    ${name}
+    Input Text    ${SignupLoginPage.input_email}    ${email}
+        
     

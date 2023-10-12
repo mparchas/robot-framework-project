@@ -13,4 +13,9 @@ class HomePage:
 
 class SignupLoginPage:
     login_form = "xpath://div[@class='login-form']"
+
     signup_form = "xpath://div[@class='signup-form']"
+    input_name = signup_form + "//input[@data-qa='signup-name']"
+    input_email = signup_form + "//input[@data-qa='signup-email']"
+
+
