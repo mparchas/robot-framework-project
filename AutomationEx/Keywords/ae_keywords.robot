@@ -34,9 +34,19 @@ VerifyHeader
     ${actual_header}    Get Text    ${SignupLoginPage.${form}}//h2
     Should Be Equal As Strings    ${actual_header}    ${expected_header}
 
-InputTextSignUpForm
+InputTextSignupForm
     [Arguments]    ${name}    ${email}
     Input Text    ${SignupLoginPage.input_name}    ${name}
     Input Text    ${SignupLoginPage.input_email}    ${email}
-        
-    
+
+InputTextLoginForm
+    [Arguments]    ${email}    ${password}
+    Input Text    ${SignupLoginPage.input_email1}    ${email}
+    Input Text    ${SignupLoginPage.input_password}    ${password}
+
+SubmitForm
+    [Documentation]    
+    ...    Submits one of the forms by pressing button. 
+    ...    Available forms: 'signup_form', 'login_form'
+    [Arguments]    ${form}
+    Click Button    ${SignupLoginPage.${form}}//button[@type='submit']
