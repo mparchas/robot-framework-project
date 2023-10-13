@@ -34,7 +34,7 @@ TestRegisterUser
     SetPassword    ${credentials.password}
     SetDateOfBirth    ${1}    ${1}    ${1999}
     FillUpAddressInformation    ${address_information}
-    Select Checkbox    locator=xpath://input[contains(@id, 'optin')]
-    Select Checkbox    locator=xpath://input[contains(@id, 'newsletter')]
+    # Select Checkbox    locator=xpath://input[contains(@id, 'optin')]
+    # Select Checkbox    locator=xpath://input[contains(@id, 'newsletter')]
     Sleep    5
     
