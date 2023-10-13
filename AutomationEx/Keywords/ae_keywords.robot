@@ -88,6 +88,7 @@ SetDateOfBirth
         Should Be Equal As Integers    ${value}    ${set_value}
     END
 
+
 FillUpAddressInformation
     [Documentation]    Fill up address information. 
     ...    kwargs: 
