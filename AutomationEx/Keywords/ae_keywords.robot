@@ -1,5 +1,6 @@
 *** Settings ***
 Library    SeleniumLibrary
+Library    Collections
 Resource    ../../Resources/generic_keywords.resource
 Variables    ../Locators/locators.py
 
@@ -71,6 +72,45 @@ SetDateOfBirth
     ...    'month' as int (e.g. 1 for January, 3 for March etc.) 
     ...    'year' as int
     [Arguments]    ${day}    ${month}    ${year}
-    Select From List By Value    ${AccountDetailsPage.dropdown_day}    ${day}
-    Select From List By Value    ${AccountDetailsPage.dropdown_month}    ${month}
-    Select From List By Value    ${AccountDetailsPage.dropdown_year}    ${year}
+    @{values}=    
+    ...    Create List 
+    ...       ${day}    
+    ...       ${month}
+    ...       ${year}
+    @{dropdown_locators}=    
+    ...    Create List
+    ...        ${AccountDetailsPage.dropdown_day}
+    ...        ${AccountDetailsPage.dropdown_month}
+    ...        ${AccountDetailsPage.dropdown_year}
+    FOR  ${value}    ${dropdown}  IN ZIP    ${values}    ${dropdown_locators}    
+        Select From List By Value    ${dropdown}    ${value}
+        ${set_value}    Get Selected List Value    ${dropdown}
+        Should Be Equal As Integers    ${value}    ${set_value}
+    END
+
+FillUpAddressInformation
+    [Documentation]    Fill up address information. 
+    ...    kwargs: 
+     ...    first_name: str 
+     ...    last_name: str
+     ...    company: str 
+     ...    address1:str 
+     ...    address2:str 
+     ...    country: str 
+     ...    state: str 
+     ...    city: str 
+     ...    zipcode: str 
+     ...    mobile_number: str
+    [Arguments]    ${address_info}
+    ${keys}=    Get Dictionary Keys    ${address_info}
+    FOR  ${key}  IN  @{keys}
+        IF    "${key}" != "country"
+            Input Text    ${AccountDetailsPage.address_information.format('${key}')}    ${address_info.${key}}
+        ELSE
+            Select From List By Value    
+            ...    ${AccountDetailsPage.address_information.replace('input', 'select').format('${key}')}
+            ...    ${address_info.${key}}
+        END
+    END
+    
+

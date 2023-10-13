@@ -29,3 +29,5 @@ class AccountDetailsPage:
     dropdown_month =login_form + "//select[@data-qa='months']"
     dropdown_year = login_form + "//select[@data-qa='years']"
     
+    address_information = login_form + "//input[@id='{}']"
+    
